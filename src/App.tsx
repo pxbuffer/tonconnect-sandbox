@@ -1,15 +1,18 @@
 import { toNano } from "@ton/core";
 import { TonConnectUI } from "@tonconnect/ui";
+import { useRef } from "react";
 import "./App.css";
 
 const tonConnect = new TonConnectUI({
-  manifestUrl: "https://15a08885a8c5.ngrok-free.app/tonconnect-manifest.json",
+  manifestUrl: "https://25a399acc8e4.ngrok-free.app/tonconnect-manifest.json",
   actionsConfiguration: {
     modals: [],
   },
 });
 
 function App() {
+  const ref = useRef();
+
   return (
     <>
       <button onClick={() => tonConnect.openModal()}>connect wallet</button>
@@ -27,7 +30,7 @@ function App() {
             },
             {
               onRequestSent: (redirectToWallet) => {
-                redirectToWallet();
+                ref.current = redirectToWallet;
               },
             }
           )
@@ -35,6 +38,7 @@ function App() {
       >
         send transaction
       </button>
+      <button onClick={() => ref.current()}>send tx second time</button>
     </>
   );
 }

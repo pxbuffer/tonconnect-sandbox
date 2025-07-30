@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     host: "localhost",
     port: 3000,
-    allowedHosts: ["15a08885a8c5.ngrok-free.app"],
+    allowedHosts: ["25a399acc8e4.ngrok-free.app"],
   },
   optimizeDeps: {
     esbuildOptions: {
